@@ -1,0 +1,35 @@
+name: Update Binance P2P Prices
+
+on:
+  schedule:
+    # Ejecutar cada hora
+    - cron: '6 * * * *'
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run the script to get prices
+      run: python collect.py
+
+    - name: Commit changes
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add usdt_bob_prices.csv
+        git commit -m "Update USDT vs BOB prices"
+        git push

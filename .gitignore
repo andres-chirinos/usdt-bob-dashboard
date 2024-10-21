@@ -1,4 +1,6 @@
 *.html
 *_files/
 env/
-.*
+.venv*
+
+/.quarto/
