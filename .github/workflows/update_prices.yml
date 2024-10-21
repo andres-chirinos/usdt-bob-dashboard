@@ -2,8 +2,11 @@ name: Update Binance P2P Prices
 
 on:
   schedule:
-    # Ejecutar cada hora
     - cron: '6 * * * *'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   update-prices:
@@ -23,13 +26,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run the script to get prices
-      run: python collect.py
-
-    - name: Commit changes
+    - name: Run data collection script
       run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git add usdt_bob_prices.csv
-        git commit -m "Update USDT vs BOB prices"
-        git push
+        python collect.py
