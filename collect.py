@@ -3,7 +3,7 @@ import csv, json
 from datetime import datetime
 
 url = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
-csv_filename = "usdt_bob_prices.csv"
+csv_filename = "data/usdt_bob_prices.csv"
 
 
 def get(asset: str = "USDT", trade_type: str = "SELL"):
