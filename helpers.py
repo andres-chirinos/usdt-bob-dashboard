@@ -40,3 +40,5 @@ def make_candlestick_chart(data, ticker):
     qf.add_sma()
     qf.add_volume(up_color='#44bb70', down_color='#040548')
     return qf.iplot()
+
+

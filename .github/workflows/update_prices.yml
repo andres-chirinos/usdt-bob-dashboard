@@ -1,8 +1,8 @@
-name: Update Binance P2P Prices
+name: Update Prices
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */4 * * *"
   push:
     branches:
       - main
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements_collect.txt
 
       - name: Run data collection script
         run: |

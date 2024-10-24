@@ -2,5 +2,6 @@
 *_files/
 env/
 .venv*
-
+.env
 /.quarto/
+.ignore
