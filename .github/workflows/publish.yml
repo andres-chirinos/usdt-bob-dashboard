@@ -1,6 +1,6 @@
 on:
   workflow_run:
-    workflows: ["Update Binance P2P Prices"]
+    workflows: ["Update Prices"]
     types:
       - completed
 

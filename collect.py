@@ -4,8 +4,8 @@ from datetime import datetime
 
 #Const
 url = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
-offers_csv_filename = "data/binance_usdt_bob_offers.csv"
-currency_csv_filename = "data/currency_exchange_rates.csv"
+offers_csv_filename = "data/binance_usdt_bob_offers2.csv"
+currency_csv_filename = "data/currency_exchange_rates2.csv"
 
 #Utils
 def listing(json, *objectives):
@@ -44,12 +44,14 @@ def get_from_binance(asset: str = "USDT"):
         "publisherType": None,
     }
 
+    time = int(datetime.now().timestamp())
+
     all_data = []
-    for trade_type in ["BUY","SELL"]:
+    for trade_type in ["BUY", "SELL"]:
+        payload["tradeType"] = trade_type
+        payload["page"] = 1  # Reset page number for each trade type
         while True:
-            temp = payload
-            temp["tradeType"] = trade_type
-            response = requests.post(url, json=temp)
+            response = requests.post(url, json=payload)
             data = response.json()
 
             if not data["data"]:
@@ -59,7 +61,7 @@ def get_from_binance(asset: str = "USDT"):
             payload["page"] += 1
 
     df = pd.DataFrame([{
-        'timestamp': int(datetime.now().timestamp()),
+        'timestamp': time,
         'advNo': adv['adv']['advNo'],
         'classify': adv['adv']['classify'],
         'tradeType': adv['adv']['tradeType'],
@@ -87,7 +89,7 @@ def get_from_binance(asset: str = "USDT"):
         'maxSingleTransQuantity': round(float(adv['adv']['maxSingleTransQuantity'] or 0), 5),
         'dynamicMaxSingleTransQuantity': round(float(adv['adv']['dynamicMaxSingleTransQuantity'] or 0), 5),
         'commissionRate': round(float(adv['adv']['commissionRate'] or 0), 5),
-        'tradeMethodCommissionRates': listing(adv['adv']['tradeMethodCommissionRates'], 'paymentMethod','commissionRate'),
+        'tradeMethodCommissionRates': listing(adv['adv']['tradeMethodCommissionRates'], 'paymentMethod', 'commissionRate'),
         'isSafePayment': adv['adv']['isSafePayment'],
         'userNo': adv['advertiser']['userNo'],
         'monthOrderCount': int(adv['advertiser']['monthOrderCount'] or 0),
@@ -101,13 +103,10 @@ def get_from_binance(asset: str = "USDT"):
         'activeTimeInSecond': adv['advertiser']['activeTimeInSecond']
     } for adv in all_data])
 
-    # df = df.dropna(axis=1, how='all')
-
-    append_or_create(offers_csv_filename,df)
+    append_or_create(offers_csv_filename, df)
 
     return df
 
-# Agrupar y resumir datos
 def aggregate_data(df):
     # Agrupar por precio
     grouped_df = df.groupby(['price', 'tradeType']).agg(
@@ -126,7 +125,7 @@ def aggregate_data(df):
     })
 
     grouped_df['price'] = round(grouped_df['price'],5)
-    grouped_df['available'] = round(grouped_df['price'],5)
+    grouped_df['available'] = round(grouped_df['available'],5)
 
     # Añadir columnas adicionales
     grouped_df['curr_from'] = grouped_df['type'].apply(lambda x: 'USDT' if x == 'SELL' else 'BOB')
@@ -140,4 +139,4 @@ def aggregate_data(df):
 
 if __name__ == "__main__":
     df = get_from_binance()
-    aggregated_df = aggregate_data(df)
+    #aggregated_df = aggregate_data(df)
