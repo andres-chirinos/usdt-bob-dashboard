@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements_collect.txt
 
       - name: Run data collection script
-        run: |
+        run: |  
           python collect.py
 
       - name: Configure Git

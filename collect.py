@@ -4,8 +4,8 @@ from datetime import datetime
 
 #Const
 url = "https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search"
-offers_csv_filename = "data/binance_usdt_bob_offers2.csv"
-currency_csv_filename = "data/currency_exchange_rates2.csv"
+offers_csv_filename = "data/binance_usdt_bob_offers.csv"
+currency_csv_filename = "data/currency_exchange_rates.csv"
 
 #Utils
 def listing(json, *objectives):
@@ -139,4 +139,4 @@ def aggregate_data(df):
 
 if __name__ == "__main__":
     df = get_from_binance()
-    #aggregated_df = aggregate_data(df)
+    aggregated_df = aggregate_data(df)
