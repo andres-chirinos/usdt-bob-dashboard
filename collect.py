@@ -109,8 +109,7 @@ def get_from_binance(asset: str = "USDT"):
 
 def aggregate_data(df):
     # Agrupar por precio
-    grouped_df = df.groupby(['price', 'tradeType']).agg(
-        timestamp=('timestamp', 'first'),
+    grouped_df = df.groupby(['price', 'tradeType','timestamp']).agg(
         advertisers_qty=('price', 'size'),
         available=('tradableQuantity', 'sum')
     ).reset_index()
@@ -139,4 +138,5 @@ def aggregate_data(df):
 
 if __name__ == "__main__":
     df = get_from_binance()
+    #df = pd.read_csv("data/binance_usdt_bob_offers.csv")
     aggregated_df = aggregate_data(df)
