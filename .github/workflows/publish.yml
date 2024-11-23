@@ -26,6 +26,11 @@ jobs:
       - run: pip install jupyter
       - run: pip install -r requirements.txt
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Clear GitHub Pages Cache
         run: |
           git rm -r --cached .
