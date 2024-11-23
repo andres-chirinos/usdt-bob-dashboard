@@ -34,7 +34,7 @@ Determinar el valor real del Boliviano en el mercado internacional mediante el a
 
 ## Hipótesis
 
-El tipo de cambio entre el USDT y el BOB refleja de manera más precisa y dinámica el valor real del Boliviano en el mercado internacional, en comparación con el tipo de cambio oficial establecido por las autoridades económicas de Bolivia [@garcia2020analisis].
+El tipo de cambio entre el USDT y el BOB refleja de manera más precisa y dinámica el valor real del Boliviano en el mercado internacional, en comparación con el tipo de cambio oficial establecido por las autoridades económicas de Bolivia [@garcia2020analisis]. 
 
 # Materiales y métodos
 
@@ -42,13 +42,13 @@ Para llevar a cabo este estudio, se recopilaron datos históricos de las transac
 
 Se utilizó el lenguaje de programación Python y las siguientes librerías:
 
--   **pandas**: Para el manejo y procesamiento de datos.
--   **plotly**: Para la generación de gráficos interactivos.
--   **pytz**: Para el manejo de zonas horarias.
+- **pandas**: Para el manejo y procesamiento de datos.
+- **plotly**: Para la generación de gráficos interactivos.
+- **pytz**: Para el manejo de zonas horarias.
 
 A continuación, se presenta el fragmento de código utilizado para el procesamiento de los datos:
 
-``` python
+```python
 import pandas as pd
 import pytz
 
@@ -71,10 +71,9 @@ buy_df = buy_df.groupby(buy_df['timestamp']).agg(
 Se realizó un agrupamiento basado en la marca de tiempo para obtener los precios mínimos y máximos de compra y venta, respectivamente, además de la suma total de la cantidad disponible en cada transacción.
 
 # Resultados
-
 Los datos procesados permitieron generar gráficos interactivos que muestran la evolución del precio del USDT frente al BOB a lo largo del tiempo. A continuación, se presenta el código utilizado para generar el gráfico principal:
 
-``` python
+```python
 import plotly.express as px
 
 # Crear el gráfico de líneas interactivo
@@ -115,23 +114,19 @@ fig.show()
 El gráfico resultante muestra las fluctuaciones en los precios de compra y venta del USDT en BOB, permitiendo visualizar tendencias y posibles discrepancias con el tipo de cambio oficial, representado por la línea verde discontinua en 6.96.
 
 # Discusión
-
 Los resultados indican que el precio del USDT en BOB presenta variaciones que pueden reflejar las dinámicas reales del mercado cambiario en Bolivia. La diferencia entre el tipo de cambio oficial y el observado en el mercado de criptomonedas sugiere la existencia de factores económicos y financieros que influyen en la valoración del Boliviano.
 
 Las posibles causas de estas discrepancias incluyen restricciones en el acceso a divisas, expectativas inflacionarias, y movimientos especulativos en el mercado de criptomonedas. Es importante considerar que, aunque el mercado de criptomonedas ofrece una visión alternativa, también está sujeto a volatilidades y riesgos inherentes a su naturaleza descentralizada y menos regulada.
 
 # Conclusiones
-
 El análisis del historial de precios del USDT contra el BOB proporciona una perspectiva complementaria para evaluar el valor real del Boliviano en el mercado internacional. Los hallazgos respaldan la hipótesis de que el tipo de cambio obtenido a través de criptomonedas puede reflejar con mayor precisión las dinámicas económicas actuales, en comparación con el tipo de cambio oficial.
 
 La implementación de un dashboard interactivo facilita el acceso a esta información, permitiendo a investigadores y tomadores de decisiones analizar en tiempo real las fluctuaciones y tendencias en el mercado cambiario.
 
 # Agradecimientos {.unnumbered}
-
 Expresamos nuestro agradecimiento a la Carrera de Estadística de la Universidad Mayor de San Andrés y a la Sociedad Científica de Estudiantes de Estadística - UMSA por su apoyo y colaboración en esta investigación.
 
 # Conflicto de intereses {.unnumbered}
-
 Los autores declaran que no existe ningún conflicto de intereses en la realización de este estudio.
 
 # Referencia Bibliográfica {.unnumbered}
