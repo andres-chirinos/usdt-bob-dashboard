@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,10 +31,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-45251d0ae452e29f4c7a2ddda39ebc4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="index_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
 <script src="index_files/libs/quarto-dashboard/stickythead.js"></script>
 <script src="index_files/libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
@@ -81,7 +81,7 @@ require(['plotly'], function(Plotly) {
       <div class="navbar-title">
         <div class="navbar-title-text"><a href="#">USDT/BOB</a></div>
         <div class="navbar-subtitle">Historico del precio del USDT (Tether US Dollar) contra el BOB (Boliviano)</div>
-        <div class="navbar-author">Andres ChirinosKevin Barrientos</div>
+        <div class="navbar-author">Andres Chirinos, Kevin Barrientos</div>
       </div>
     </div>
 <div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://github.com/andres-chirinos/usdt-bob-dashboard/" title="GitHub"><i class="bi bi-github"></i></a><a class="quarto-dashboard-link" href="article\index.qmd"><i class="bi bi-file-text-fill"></i><span class="quarto-dashboard-link-text">Articulo</span></a></div></div>
@@ -268,8 +268,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -380,7 +378,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
