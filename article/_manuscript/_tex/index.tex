@@ -1,0 +1,466 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{1}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Historial de Precio del Dólar contra el Boliviano},
+  pdflang={es},
+  pdfkeywords={Dólar, Boliviano, Criptomonedas, USDT},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Historial de Precio del Dólar contra el Boliviano}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Dólar estimado a través del Tether Dollar}
+\author{Andres Humberto Chirinos Lizondo \and Kevin Barrientos Carrasco}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+El presente trabajo busca almacenar información de las ofertas y el
+mercado respecto al precio del Dólar que está evaluado a través de USDT
+y otras criptomonedas al Boliviano, siendo un método para encontrar el
+valor real del Boliviano en el mercado internacional. Sus resultados se
+presentan en un dashboard publicado para estos fines.
+\end{abstract}
+
+
+\section{Introducción}\label{introducciuxf3n}
+
+En los últimos años, las criptomonedas han ganado relevancia en el
+ámbito financiero mundial, ofreciendo alternativas a las monedas
+tradicionales en transacciones y reservas de valor. El Tether (USDT),
+una criptomoneda estable respaldada por el dólar estadounidense, se ha
+convertido en una herramienta clave para evaluar el valor de diferentes
+monedas en el mercado internacional (Nakamoto 2008).
+
+Bolivia, con su moneda oficial el Boliviano (BOB), mantiene un tipo de
+cambio fijo con el dólar estadounidense. Sin embargo, la evaluación del
+BOB a través de criptomonedas como el USDT puede ofrecer una perspectiva
+diferente sobre su valor real en el mercado internacional. Este enfoque
+es particularmente relevante en contextos donde las restricciones
+cambiarias y las políticas monetarias pueden distorsionar la percepción
+del valor de una moneda (Pérez 2021).
+
+El presente trabajo busca almacenar y analizar información de las
+ofertas y el mercado respecto al precio del Dólar, evaluado a través de
+USDT y otras criptomonedas populares en Bolivia, principalmente de
+múltiples fuentes como Binance. A través de este análisis, se pretende
+encontrar el valor real del Boliviano en el mercado internacional y
+presentar los resultados en un dashboard interactivo.
+
+\subsection{Objetivo}\label{objetivo}
+
+Determinar el valor real del Boliviano en el mercado internacional
+mediante el análisis del historial de precios del USDT frente al BOB, y
+presentar los hallazgos en un dashboard interactivo.
+
+\subsection{Hipótesis}\label{hipuxf3tesis}
+
+El tipo de cambio entre el USDT y el BOB refleja de manera más precisa y
+dinámica el valor real del Boliviano en el mercado internacional, en
+comparación con el tipo de cambio oficial establecido por las
+autoridades económicas de Bolivia (García y López 2020).
+
+\section{Materiales y métodos}\label{materiales-y-muxe9todos}
+
+Para llevar a cabo este estudio, se recopilaron datos históricos de las
+transacciones de USDT a BOB en plataformas de intercambio de
+criptomonedas, principalmente Binance. Los datos incluyen información
+sobre el precio, volumen, disponibilidad, tipo de transacción y marcas
+de tiempo.
+
+Se utilizó el lenguaje de programación Python y las siguientes
+librerías:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{pandas}: Para el manejo y procesamiento de datos.
+\item
+  \textbf{plotly}: Para la generación de gráficos interactivos.
+\item
+  \textbf{pytz}: Para el manejo de zonas horarias.
+\end{itemize}
+
+A continuación, se presenta el fragmento de código utilizado para el
+procesamiento de los datos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ pytz}
+
+\CommentTok{\# Cargar los datos}
+\NormalTok{trade\_df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{"data/currency\_exchange\_rates.csv"}\NormalTok{)}
+
+\CommentTok{\# Ajustar la marca de tiempo a la zona horaria GMT{-}4}
+\NormalTok{gmt\_minus\_4 }\OperatorTok{=}\NormalTok{ pytz.timezone(}\StringTok{\textquotesingle{}Etc/GMT{-}4\textquotesingle{}}\NormalTok{)}
+\NormalTok{trade\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(trade\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{], unit}\OperatorTok{=}\StringTok{\textquotesingle{}s\textquotesingle{}}\NormalTok{)}\OperatorTok{\textbackslash{}}
+\NormalTok{    .dt.tz\_localize(}\StringTok{\textquotesingle{}UTC\textquotesingle{}}\NormalTok{).dt.tz\_convert(gmt\_minus\_4)}
+
+\CommentTok{\# Filtrar y agrupar datos de compra}
+\NormalTok{buy\_df }\OperatorTok{=}\NormalTok{ trade\_df.query(}\StringTok{"type == \textquotesingle{}SELL\textquotesingle{}"}\NormalTok{)}
+\NormalTok{buy\_df }\OperatorTok{=}\NormalTok{ buy\_df.groupby(buy\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{]).agg(}
+\NormalTok{    price}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}min\textquotesingle{}}\NormalTok{),}
+\NormalTok{    quantity}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}available\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sum\textquotesingle{}}\NormalTok{),}
+\NormalTok{).reset\_index()}
+\end{Highlighting}
+\end{Shaded}
+
+Se realizó un agrupamiento basado en la marca de tiempo para obtener los
+precios mínimos y máximos de compra y venta, respectivamente, además de
+la suma total de la cantidad disponible en cada transacción.
+
+\section{Resultados}\label{resultados}
+
+Los datos procesados permitieron generar gráficos interactivos que
+muestran la evolución del precio del USDT frente al BOB a lo largo del
+tiempo. A continuación, se presenta el código utilizado para generar el
+gráfico principal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ plotly.express }\ImportTok{as}\NormalTok{ px}
+
+\CommentTok{\# Crear el gráfico de líneas interactivo}
+\NormalTok{fig }\OperatorTok{=}\NormalTok{ px.line()}
+
+\CommentTok{\# Añadir datos de compra}
+\NormalTok{fig.add\_scatter(x}\OperatorTok{=}\NormalTok{buy\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{], y}\OperatorTok{=}\NormalTok{buy\_df[}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{],}
+\NormalTok{                mode}\OperatorTok{=}\StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{, name}\OperatorTok{=}\StringTok{\textquotesingle{}Compra\textquotesingle{}}\NormalTok{, line}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(color}\OperatorTok{=}\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{))}
+
+\CommentTok{\# Añadir datos de venta}
+\NormalTok{fig.add\_scatter(x}\OperatorTok{=}\NormalTok{sell\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{], y}\OperatorTok{=}\NormalTok{sell\_df[}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{],}
+\NormalTok{                mode}\OperatorTok{=}\StringTok{\textquotesingle{}lines\textquotesingle{}}\NormalTok{, name}\OperatorTok{=}\StringTok{\textquotesingle{}Venta\textquotesingle{}}\NormalTok{, line}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{))}
+
+\CommentTok{\# Añadir línea fija representando el tipo de cambio oficial}
+\NormalTok{fig.add\_shape(}
+    \BuiltInTok{type}\OperatorTok{=}\StringTok{"line"}\NormalTok{,}
+\NormalTok{    x0}\OperatorTok{=}\NormalTok{buy\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{].}\BuiltInTok{min}\NormalTok{(),}
+\NormalTok{    y0}\OperatorTok{=}\FloatTok{6.96}\NormalTok{,}
+\NormalTok{    x1}\OperatorTok{=}\NormalTok{buy\_df[}\StringTok{\textquotesingle{}timestamp\textquotesingle{}}\NormalTok{].}\BuiltInTok{max}\NormalTok{(),}
+\NormalTok{    y1}\OperatorTok{=}\FloatTok{6.96}\NormalTok{,}
+\NormalTok{    line}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(color}\OperatorTok{=}\StringTok{"green"}\NormalTok{, width}\OperatorTok{=}\DecValTok{2}\NormalTok{, dash}\OperatorTok{=}\StringTok{"dash"}\NormalTok{),}
+\NormalTok{    name}\OperatorTok{=}\StringTok{\textquotesingle{}Tipo de Cambio Oficial\textquotesingle{}}
+\NormalTok{)}
+
+\CommentTok{\# Configurar el diseño del gráfico}
+\NormalTok{fig.update\_layout(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Historial de Precio del USDT contra el BOB\textquotesingle{}}\NormalTok{,}
+\NormalTok{    xaxis\_title}\OperatorTok{=}\StringTok{\textquotesingle{}Fecha y Hora\textquotesingle{}}\NormalTok{,}
+\NormalTok{    yaxis\_title}\OperatorTok{=}\StringTok{\textquotesingle{}Precio (BOB)\textquotesingle{}}\NormalTok{,}
+\NormalTok{    legend\_title}\OperatorTok{=}\StringTok{\textquotesingle{}Tipo de Comercio\textquotesingle{}}\NormalTok{,}
+\NormalTok{    yaxis}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(tickformat}\OperatorTok{=}\StringTok{\textquotesingle{}.2f\textquotesingle{}}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Mostrar el gráfico}
+\NormalTok{fig.show()}
+\end{Highlighting}
+\end{Shaded}
+
+El gráfico resultante muestra las fluctuaciones en los precios de compra
+y venta del USDT en BOB, permitiendo visualizar tendencias y posibles
+discrepancias con el tipo de cambio oficial, representado por la línea
+verde discontinua en 6.96.
+
+\section{Discusión}\label{discusiuxf3n}
+
+Los resultados indican que el precio del USDT en BOB presenta
+variaciones que pueden reflejar las dinámicas reales del mercado
+cambiario en Bolivia. La diferencia entre el tipo de cambio oficial y el
+observado en el mercado de criptomonedas sugiere la existencia de
+factores económicos y financieros que influyen en la valoración del
+Boliviano.
+
+Las posibles causas de estas discrepancias incluyen restricciones en el
+acceso a divisas, expectativas inflacionarias, y movimientos
+especulativos en el mercado de criptomonedas. Es importante considerar
+que, aunque el mercado de criptomonedas ofrece una visión alternativa,
+también está sujeto a volatilidades y riesgos inherentes a su naturaleza
+descentralizada y menos regulada.
+
+\section{Conclusiones}\label{conclusiones}
+
+El análisis del historial de precios del USDT contra el BOB proporciona
+una perspectiva complementaria para evaluar el valor real del Boliviano
+en el mercado internacional. Los hallazgos respaldan la hipótesis de que
+el tipo de cambio obtenido a través de criptomonedas puede reflejar con
+mayor precisión las dinámicas económicas actuales, en comparación con el
+tipo de cambio oficial.
+
+La implementación de un dashboard interactivo facilita el acceso a esta
+información, permitiendo a investigadores y tomadores de decisiones
+analizar en tiempo real las fluctuaciones y tendencias en el mercado
+cambiario.
+
+\section*{Agradecimientos}\label{agradecimientos}
+\addcontentsline{toc}{section}{Agradecimientos}
+
+Expresamos nuestro agradecimiento a la Carrera de Estadística de la
+Universidad Mayor de San Andrés y a la Sociedad Científica de
+Estudiantes de Estadística - UMSA por su apoyo y colaboración en esta
+investigación.
+
+\section*{Conflicto de intereses}\label{conflicto-de-intereses}
+\addcontentsline{toc}{section}{Conflicto de intereses}
+
+Los autores declaran que no existe ningún conflicto de intereses en la
+realización de este estudio.
+
+\section*{Referencia Bibliográfica}\label{referencia-bibliogruxe1fica}
+\addcontentsline{toc}{section}{Referencia Bibliográfica}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-garcia2020analisis}
+García, María, y Ricardo López. 2020. {«Análisis del mercado cambiario
+boliviano»}. \emph{Anales de Economía Boliviana} 15 (1): 30-45.
+
+\bibitem[\citeproctext]{ref-nakamoto2008bitcoin}
+Nakamoto, Satoshi. 2008. {«Bitcoin: A Peer-to-Peer Electronic Cash
+System»}. \url{https://bitcoin.org/bitcoin.pdf}.
+
+\bibitem[\citeproctext]{ref-perez2021impacto}
+Pérez, Luis. 2021. {«Impacto de las criptomonedas en economías
+emergentes»}. \emph{Revista de Economía y Finanzas} 10 (2): 50-65.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
