@@ -3,9 +3,6 @@ name: Update Prices
 on:
   schedule:
     - cron: "0 */2 * * *"
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
