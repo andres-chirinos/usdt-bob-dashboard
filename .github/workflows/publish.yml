@@ -3,6 +3,7 @@ on:
     workflows: ["Update Prices"]
     types:
       - completed
+  workflow_dispatch:
 
 name: Quarto Publish
 
