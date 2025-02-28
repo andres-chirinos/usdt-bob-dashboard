@@ -1,0 +1,24 @@
+---
+title: "Historial de Precio del Dólar contra el Boliviano"
+subtitle: Dólar estimado a través del USDT
+lang: es
+authors:
+  - name: Andres Humberto Chirinos Lizondo
+    affiliation: 
+      - Sociedad Científica de Estudiantes de Estadística - UMSA
+    corresponding: true
+    email: ahchirinos@umsa.bo
+    orcid: 0009-0004-1628-6135
+  - name: Kevin Barrientos Carrasco
+    affiliation: 
+      - Universidad Mayor de San Andrés
+    corresponding: true
+format:
+  typst: default
+  revealjs:
+    output-file: index-reveal.html
+  #dashboard: 
+  #  output-file: index-dashboard.html
+---
+
+{{< include README.md >}}

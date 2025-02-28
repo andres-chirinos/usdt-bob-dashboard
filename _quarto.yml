@@ -1,0 +1,20 @@
+project:
+  type: website
+
+website:
+  title: "Precio del Boliviano BOB"
+  navbar:
+    title: "USDT vs BOB"
+    items:
+      - href: index.html
+        icon: speedometer
+        text: Inicio
+      - href: dashboard.html
+        icon: speedometer
+        text: Dashboard
+      - href: article/index.html
+        icon: file-text-fill
+        text: Articulo
+    tools:
+      - icon: github
+        href: https://github.com/quarto-dev/quarto-examples/tree/main/brand/brand-simple

@@ -5,3 +5,8 @@ env/
 .env
 /.quarto/
 .ignore
+dashboard
+_site
+_manuscript
+__pycache__
+site_libs
