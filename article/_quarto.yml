@@ -17,13 +17,13 @@ format:
   html:
     comments:
       giscus: 
-        repo: sociest/sociest.github.io
+        repo: sociest/sociest.org
         language: es
-  docx: default
-  jats: default
+  #docx: default
+  #jats: default
 
   # (other formats)
-  # pdf: default
+  pdf: default
 
 execute:
   freeze: true
