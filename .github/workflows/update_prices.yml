@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements_collect.txt
 
       - name: Run data collection script
-        run: |  
+        run: |
           python collect.py
 
       - name: Configure Git
@@ -36,6 +36,7 @@ jobs:
         run: |
           git add .
           git commit -m "Update prices"
-          git push
+          git pull --rebase origin main
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
